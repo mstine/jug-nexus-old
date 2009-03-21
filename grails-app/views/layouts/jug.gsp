@@ -94,7 +94,7 @@ Description: A two-column, fixed-width with fluid header ideal for 1024x768 reso
 			</li>
             <li id="poweredBy" style="text-align: center;">
               <h2>Powered By</h2>
-              <p><a href="http://grails.org"><img src="${createLinkTo(dir:'images',file:'grails---600x181-on-white-textured.png')}" alt="Grails"/></a></p>
+              <p><a href="http://grails.org"><img src="${createLinkTo(dir:'images',file:'grails_logo.jpg')}" width="140" height="42" alt="Grails"/></a></p>
             </li>
 		</ul>
 	</div>
