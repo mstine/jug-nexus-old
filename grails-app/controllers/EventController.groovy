@@ -96,4 +96,8 @@ class EventController {
             render(view:'create',model:[eventInstance:eventInstance])
         }
     }
+
+    def preview = {
+      render(template:'textile',model:[text:params.text])
+    }
 }

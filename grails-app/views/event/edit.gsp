@@ -3,6 +3,22 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="layout" content="jug"/>
   <title>Edit Event</title>
+  <g:javascript library="prototype"/>                                           
+  <g:javascript>
+    document.observe("dom:loaded", function() {
+
+        new Form.Element.Observer('directions', 2, function() {
+          var directions = escape($('directions').value);
+          new Ajax.Updater('directionsPreview','/jugNexus/event/preview',{asynchronous:true,evalScripts:true,parameters:'text='+directions});
+        });
+
+        new Form.Element.Observer('description', 2, function() {
+          var description = escape($('description').value);
+          new Ajax.Updater('descriptionPreview','/jugNexus/event/preview',{asynchronous:true,evalScripts:true,parameters:'text='+description});
+        });
+
+    });
+  </g:javascript>
 </head>
 <body>
 <div class="nav">
@@ -55,6 +71,12 @@
         </tr>
 
         <tr class="prop">
+          <td valign="top" colspan="2">
+               <div id="directionsPreview">${eventInstance?.directions?.encodeAsTextile()}</div>
+          </td>
+        </tr>
+
+        <tr class="prop">
           <td valign="top" class="name">
             <label for="startTime">Start Time:</label>
           </td>
@@ -79,6 +101,12 @@
           </td>
           <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'description', 'errors')}">
             <textarea id="description" name="description" rows="8" cols="38">${fieldValue(bean: eventInstance, field: 'description')}</textarea>
+          </td>
+        </tr>
+
+        <tr class="prop">
+          <td valign="top" colspan="2">
+               <div id="descriptionPreview">${eventInstance?.description?.encodeAsTextile()}</div>
           </td>
         </tr>
 
