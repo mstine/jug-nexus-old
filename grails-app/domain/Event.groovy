@@ -6,4 +6,10 @@ class Event {
   Date endTime
   String description
   Boolean onHomePage
+  Boolean archived
+  Long jugEventsId
+
+  static constraints = {
+    description(maxSize:4000)
+  }
 }
