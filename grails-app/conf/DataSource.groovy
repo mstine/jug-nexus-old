@@ -1,8 +1,6 @@
 dataSource {
 	pooled = true
-	driverClassName = "org.hsqldb.jdbcDriver"
-	username = "sa"
-	password = ""
+	driverClassName = "com.mysql.jdbc.Driver"
 }
 hibernate {
     cache.use_second_level_cache=true
@@ -13,20 +11,26 @@ hibernate {
 environments {
 	development {
 		dataSource {
+            username = "root"
+            password = ""
 			dbCreate = "create-drop" // one of 'create', 'create-drop','update'
-			url = "jdbc:hsqldb:mem:devDB"
+			url = "jdbc:mysql://localhost/jugnexusdev"
 		}
 	}
 	test {
 		dataSource {
+            username = "root"
+            password = ""
 			dbCreate = "update"
-			url = "jdbc:hsqldb:mem:testDb"
+			url = "jdbc:mysql://localhost/jugnexustest"
 		}
 	}
 	production {
 		dataSource {
+			username = "root"
+            password = ""
 			dbCreate = "update"
-			url = "jdbc:hsqldb:file:prodDb;shutdown=true"
+			url = "jdbc:mysql://localhost/jugnexusprod"
 		}
 	}
 }
