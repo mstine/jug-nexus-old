@@ -25,9 +25,12 @@
 
         <g:sortableColumn property="title" title="Title"/>
 
-
+        <g:sortableColumn property="jugEventsId" title="JUGEvents ID"/>                             
 
         <g:sortableColumn property="onHomePage" title="Home Page?"/>
+
+        <g:sortableColumn property="onHomePage" title="Archived?"/>
+
 
       </tr>
       </thead>
@@ -41,7 +44,12 @@
 
           <td>${fieldValue(bean: eventInstance, field: 'title')}</td>
 
+          <td>${fieldValue(bean: eventInstance, field: 'jugEventsId')}</td>
+
           <td>${fieldValue(bean: eventInstance, field: 'onHomePage')}</td>
+
+          <td>${fieldValue(bean: eventInstance, field: 'archived')}</td>
+
 
         </tr>
       </g:each>
