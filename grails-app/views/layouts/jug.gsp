@@ -28,18 +28,17 @@ Description: A two-column, fixed-width with fluid header ideal for 1024x768 reso
 <hr />
 <div id="logo">
 	<h1><a href="">Memphis/Mid-South Java User Group</a></h1>
-	<p>A group for Java developers from Memphis, TN and the surrounding Mid-South</p>
 </div>
 <hr />
 <!-- end header -->
 <!-- start menu -->
 <div id="menu">
 	<ul>
-		<li class="active"><a href="#">Home</a></li>
-		<li><a href="#">Blogs</a></li>
-		<li><a href="#">Member Benefits</a></li>
-		<li><a href="#">Meeting Archive</a></li>
-		<li><a href="#">Contact</a></li>
+		<li><g:link controller="home">Home</g:link></li>
+		<!--<li><a href="#">Blogs</a></li>-->
+		<!--<li><a href="#">Member Benefits</a></li>-->
+		<li><g:link controller="eventArchive">Meeting Archive</g:link></li>
+		<!--<li><a href="#">Contact</a></li>-->
 	</ul>
 </div>
 <!-- end menu -->
@@ -59,7 +58,14 @@ Description: A two-column, fixed-width with fluid header ideal for 1024x768 reso
             </li>
             <li id="upcoming">
                 <h2>Upcoming Meetings</h2>
-                Some upcoming meetings
+                <ul>
+                  <g:each in="${Event.findAllByArchived(false)}" var="event">
+                    <li><a href="http://jugevents.org/jugevents/event/${event.jugEventsId}">
+                      <g:formatDate format="MM/dd/yyyy" date="${event.startTime}"/><br/>
+                      ${event.title}                    
+                    </a></li>
+                  </g:each>
+                </ul>
             </li>
             <li id="groups">
                 <h2>Google Group</h2>
@@ -80,17 +86,20 @@ Description: A two-column, fixed-width with fluid header ideal for 1024x768 reso
             </li>
             <li id="buttons" style="text-align: center; background-color:black;">
                 <p><img src="${createLinkTo(dir:'images',file:'JUG_Button-full.jpg')}" alt="Official Java User Group"/></p>
-                <p><img src="${createLinkTo(dir:'images',file:'javanet_button_170-full.jpg')}" alt="java.net member"/></p>
+                <p><a href="http://java.net"><img src="${createLinkTo(dir:'images',file:'javanet_button_170-full.jpg')}" alt="java.net member"/></a></p>
+                <p><a href="https://jug-usa.dev.java.net/"><img src="${createLinkTo(dir:'images',file:'jug-usa-lg.jpg')}" width="160" height="80" alt="JUG-USA Affiliate"/></a></p>
             </li>
 			<li id="sponsors" style="text-align: center;">
                 <h2>Sponsors</h2>
                 <h3>Principal Sponsor:</h3>
-                <p><img src="${createLinkTo(dir:'images',file:'vac_tec_logo_rgb-medium.jpg')}" alt="Vaco Technology"/></p>
+                <p><a href="http://www.vaco.com"><img src="${createLinkTo(dir:'images',file:'vac_tec_logo_rgb-medium.jpg')}" alt="Vaco Technology"/></a></p>
+                <h3>Website Sponsor:</h3>
+                <p><a href="http://www.eapps.com"><img src="${createLinkTo(dir:'images',file:'eapps_hosted_border.gif')}" alt="eApps.com"/></a></p>
                 <h3>Additional Sponsors:</h3>
-                <p><img src="${createLinkTo(dir:'images',file:'jetbrains_banner-full.jpg')}" alt="JetBrains"/></p>
-                <p><img src="${createLinkTo(dir:'images',file:'UG-sponsor-small-full.jpg')}" alt="Atlassian"/></p>
-                <p><img src="${createLinkTo(dir:'images',file:'ugmemberbanner-medium.jpg')}" alt="Apress"/></p>
-                <p><img src="${createLinkTo(dir:'images',file:'ug_ad_125_viguy-full.jpg')}" alt="O'Reilly"/></p>
+                <p><a href="http://www.jetbrains.com/?java_memphisJUG"><img src="${createLinkTo(dir:'images',file:'jetbrains_banner-full.jpg')}" alt="JetBrains"/></a></p>
+                <p><a href="http://www.atlassian.com/"><img src="${createLinkTo(dir:'images',file:'UG-sponsor-small-full.jpg')}" alt="Atlassian"/></a></p>
+                <p><a href="http://www.apress.com/"><img src="${createLinkTo(dir:'images',file:'ugmemberbanner-medium.jpg')}" alt="Apress"/></a></p>
+                <p><a href="http://www.oreilly.com/"><img src="${createLinkTo(dir:'images',file:'ug_ad_125_viguy-full.jpg')}" alt="O'Reilly"/></a></p>
 			</li>
             <li id="poweredBy" style="text-align: center;">
               <h2>Powered By</h2>
