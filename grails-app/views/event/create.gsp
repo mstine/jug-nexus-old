@@ -9,12 +9,12 @@
 
         new Form.Element.Observer('directions', 2, function() {
           var directions = escape($('directions').value);
-          new Ajax.Updater('directionsPreview','/jugNexus/event/preview',{asynchronous:true,evalScripts:true,parameters:'text='+directions});
+          new Ajax.Updater('directionsPreview','${createLink(controller:'event',action:'preview')}',{asynchronous:true,evalScripts:true,parameters:'text='+directions});
         });
 
         new Form.Element.Observer('description', 2, function() {
           var description = escape($('description').value);
-          new Ajax.Updater('descriptionPreview','/jugNexus/event/preview',{asynchronous:true,evalScripts:true,parameters:'text='+description});
+          new Ajax.Updater('descriptionPreview','${createLink(controller:'event',action:'preview')}',{asynchronous:true,evalScripts:true,parameters:'text='+description});
         });
 
     });
@@ -46,6 +46,15 @@
           </td>
           <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'title', 'errors')}">
             <input type="text" id="title" name="title" value="${fieldValue(bean: eventInstance, field: 'title')}"/>
+          </td>
+        </tr>
+
+        <tr class="prop">
+          <td valign="top" class="name">
+            <label for="jugEventsId">JUGEvents ID:</label>
+          </td>
+          <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'jugEventsId', 'errors')}">
+            <input type="text" id="jugEventsId" name="jugEventsId" value="${fieldValue(bean: eventInstance, field: 'jugEventsId')}"/>
           </td>
         </tr>
 
@@ -113,6 +122,15 @@
           </td>
           <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'onHomePage', 'errors')}">
             <g:checkBox name="onHomePage" value="${eventInstance?.onHomePage}"></g:checkBox>
+          </td>
+        </tr>
+
+        <tr class="prop">
+          <td valign="top" class="name">
+            <label for="archived">Archived:</label>
+          </td>
+          <td valign="top" class="value ${hasErrors(bean: eventInstance, field: 'archived', 'errors')}">
+            <g:checkBox name="archived" value="${eventInstance?.archived}"></g:checkBox>
           </td>
         </tr>
 
