@@ -59,7 +59,7 @@ Description: A two-column, fixed-width with fluid header ideal for 1024x768 reso
             <li id="upcoming">
                 <h2>Upcoming Meetings</h2>
                 <ul>
-                  <g:each in="${Event.findAllByArchived(false)}" var="event">
+                  <g:each in="${Event.findAllByArchived(false, [sort:'startTime', order:'asc'])}" var="event">
                     <li><a href="http://jugevents.org/jugevents/event/${event.jugEventsId}">
                       <g:formatDate format="MM/dd/yyyy" date="${event.startTime}"/><br/>
                       ${event.title}                    
